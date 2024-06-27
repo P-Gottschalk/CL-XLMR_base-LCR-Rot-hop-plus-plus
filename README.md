@@ -111,7 +111,7 @@ To store data, create a folder within Google Drive. Ensure you change the direct
 
 All contrastive learning models (CLS- and CLR-) can be run in a similar manner as the models described above. Until the the optimisation of the hyperparameters, the steps that need to be taken are identical. From here, run the "Hyperparameter Optimisation", "Model Training" and "Model Validation" in the respective CLS- and CLR- sections of the respective documents.
 
-### Plotting: All MOdels
+### Plotting: All Models
 
 1. `Shell_Plot.ipynb`: Once the respective models have been trained, and the test data of all languages has been embedded, simply run the required subsection ("Base Models", "CLS Models", "CLR MOdels") in the respective model section of the notebook.
 
