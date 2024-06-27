@@ -21,17 +21,19 @@ To view the available cli args for a program, run `python [FILE] --help`. These 
 
 Note that the some files include an ontology reasoner, and an ontology injection method, which can be used to enhance the final performance of the models. This research did not utilize an ontology reasoner nor the injection method. For descriptions to use this method, see https://github.com/wesselvanree/LCR-Rot-hop-ont-plus-plus.git.
 
-- `main_clean.py`: remove opinions that contain implicit targets and invalid targets due to translation or Aspect-Code-Switching
-- `main_translate.py`: contains a main method to create the datasets needed for all models which require translation. Also contains all functions needed to create Multilingual datasets manually, a description of how to run each model is given below. Our version uses Google API for translation. 
-- `main_embed_mbert.py`: generate mBERT embeddings, these embeddings are used by the other programs.
-- `main_embed_xlmr.py`: generate XLM-R_base and XLM-R embeddings, these embeddings are used by the other programs.
-- `main_hyperparam.py`: run hyperparameter optimization. This method can be used both for models with contrastive learning and for models without contrastive learning. Note that for models with contrastive learning, we first optimise model parameters and then subsequently optimise the beta.
-- `main_train.py`: train the model for a given set of hyperparameters.
-- `main_validate.py`: validate a trained model.
+- `main_clean.py`: cleans dataset by removing opinions with implicit or invalid targets which are either found in the original dataset or occur during translation and Aspect-Code-Switching.
+- `main_translate.py`: contains a main method to create the datasets needed for all models which require translation. Here, we use Google API for translations. The translation process can also be carried out manually using functions.
+- `main_embed_mbert.py`: generates mBERT embeddings, which are utilised when running in tuning, training and validation of our model.
+- `main_embed_xlmr.py`: generates XLM-R_base and XLM-R embeddings, which are utilised when running in tuning, training and validation of our model.
+- `main_hyperparam.py`: runs hyperparameter optimization. This method can be used both for models with contrastive learning and for models without contrastive learning. Note that for models with contrastive learning, we first optimise model parameters and then subsequently optimise the beta.
+- `main_train.py`:  trains a specific model using the hyperparameter inputs from the tuning done in `main_hyperparam.py`.
+- `main_validate.py`: validates the trained model using the test data of the requested language. Prints various model evaluation scores.
+- `main_plot.py`: plots the t-SNE plots of the high-level sentiment representation vectors used in the final layer of LCR-Rot-hop++.
+
 
 ## Models
 ### XLMR_base-LCR-Rot-hop++
-Run `main_clean.py` on the English train and test datasets, which are selected by passing either "Train" or "Test" as parameter inputs for the variable "--phase". Note that the test dataset for the language that the model is evaluated on also needs to be cleaned. Second, create XLM-R_base embeddings, which is done with `main_embed_xlmr.py` and setting the variable "--model-spec" to "xlm-roberta-base". For XLM-R embeddings, set "--model-spec" to "xlm-roberta-large". For mBERT embeddings, use `main_embed_mbert.py` instead. Then, run `main_hyperparam.py`, which provides a checkpoint file in the "data" folder, which contains the hyperparameter values needed to be changed in `main_train.py`. After updating the hyperparameters manually, run `main_train.py`, which gives a model as output, ready to be tested. Last, validate the model with `main_validate.py`, which outputs the performance measures.
+Run `main_clean.py` on the English train and test datasets, which are selected by passing either "Train" or "Test" as parameter inputs for the variable "--phase". Note that the test dataset for the language that the model is evaluated on also needs to be cleaned. Second, create XLM-R_base embeddings, which is done with `main_embed_xlmr.py` and setting the variable "--model-spec" to "xlm-roberta-base". For XLM-R embeddings, set "--model-spec" to "xlm-roberta-large". For mBERT embeddings, use `main_embed_mbert.py` instead. Then, run `main_hyperparam.py`, which provides a checkpoint file in the "data" folder, which contains the hyperparameter values needed to be changed in `main_train.py`. After updating the hyperparameters manually, run `main_train.py`, which gives a model as output, ready to be tested. Lastly, validate the model with `main_validate.py`, which outputs the performance measures.
 
 #### Adjustments for Contrastive Learning
 
@@ -47,7 +49,7 @@ To run MLCR-Rot-hop++, the English, Dutch, French, Spanish cleaned training data
 ### XLMR_base-LCR-Rot-hop-XXen++
 Once again, this process can be run directly through the "main" method of `main_translate.py`. To do so, run `main_translate.py` and set the variable "--model-type" to "mLCR-Rot-hop-XXen++". The rest of the procedure (tuning, training and validating) is the same as in the other models.
 
-To run this model manually, note that translation is necessary. Hence, the English training data first needs to be marked with the `mark_data.py` function in `main_translate.py`. Then the translation is done by running the `translate_data.py` function and specifying the target language as an input parameter. After running the translations, the markings need to be removed. That is done by the function "remove_symbols". After that, the file has to be cleaned again by `main_clean.py` to remove opinions for which the translation failed. Then it can be run the same as the other models above.
+To run this model manually, note that translation is necessary. Hence, the English training data first needs to be marked with the `mark_data.py` function in `main_translate.py`. Then the translation is done by running the `translate_data.py` function and specifying the target language as an input parameter. After running the translations, the markings need to be removed. That is done by the function "remove_symbols". After that, the file has to be cleaned again by `main_clean.py` to remove opinions for which the translation failed. After that, the same procedure as above can be followed.
 
 ### XLMR_base-Rot-hop-ACSxx
 To run this model directly through `main_translate.py`, set the variable "--model-type" to "mLCR-Rot-hop-ACSxx".
