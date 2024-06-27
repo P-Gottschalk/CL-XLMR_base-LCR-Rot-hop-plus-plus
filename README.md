@@ -33,7 +33,7 @@ Note that the some files include an ontology reasoner, and an ontology injection
 
 ## Models
 ### XLMR_base-LCR-Rot-hop++
-Run `main_clean.py` on the English train and test datasets, which are selected by passing either "Train" or "Test" as parameter inputs for the variable "--phase". Note that the test dataset for the language that the model is evaluated on also needs to be cleaned. Second, create XLM-R_base embeddings, which is done with `main_embed_xlmr.py` and setting the variable "--model-spec" to "xlm-roberta-base". For XLM-R embeddings, set "--model-spec" to "xlm-roberta-large". For mBERT embeddings, use `main_embed_mbert.py` instead. Then, run `main_hyperparam.py`, which provides a checkpoint file in the "data" folder, which contains the hyperparameter values needed to be changed in `main_train.py`. After updating the hyperparameters manually, run `main_train.py`, which gives a model as output, ready to be tested. Lastly, validate the model with `main_validate.py`, which outputs the performance measures.
+Clean the English training dataset using the `main_clean.py` method. Ensure that the variable "--phase" is set to "Train" and "--Language" is set to "English". Then, also use `main_clean.py` to clean the test data of the language that is used to validate the model. Here, set "--phase" to "Test". Subsequently,  create XLM-R_base embeddings, which is done with `main_embed_xlmr.py` and setting the variable "--model-spec" to "xlm-roberta-base". For XLM-R embeddings, set "--model-spec" to"xlm-roberta-large". For mBERT embeddings, use ``main\_embed\_mbert.py" instead. In all subsequent methods, ensure that the "--model-type" variable is set to the respective model type: "mBERT", "xlm-roberta-base", or "xlm-roberta-large". Hyperparameter optimisation is done through the ``main\_hyperparam.py" method. The results are saved in the "data" section, in the "checkpoints" folder. The model is trained using `main_train.py`, which requires the manual input of the hyperparameters from `main_hyperparam.py` before being run. The model can be validated using `main_validate.py`. Note "--model" needs to be set to the directory address of the model that is to be validated.
 
 #### Adjustments for Contrastive Learning
 
@@ -41,10 +41,10 @@ Run `main_clean.py` on the English train and test datasets, which are selected b
 - `main_train.py`: set the variable "--contrastive-learning" as described above. Set the variable "--beta" to the beta from the checkpoints obtained by the `main_hyperparam.py` method.
 
 ### XLMR_base-LCR-Rot-hop-XX++
-For these models, the same procedure as in XLMR_base-LCR-Rot-hop++ can be followed. However, the data corresponding to the language XX should be used for training and testing.
+These models are trained using the same procedure as the XLMR_base-LCR-Rot-hop++ model, with the only change being that they are trained on embeddings from language XX (FR, ES, NL) rather than English.
 
 ### XLMR_base-MLCR-Rot-hop++
-To run MLCR-Rot-hop++, the English, Dutch, French, Spanish cleaned training data files have to be combined. Either run `main_translate.py` and set the variable "--model-type" to "MLCR-Rot-hop++". Another option is to manually run the "MLCR-Rot-hop++" function in `main_translate.py`. After combining all into the multilingual dataset, the rest of the procedure is the same as for mLCR-Rot-hop++.
+The multilingual dataset that gives  MLCR-Rot-hop++ its name is created by combining the English, French, Spanish and Dutch datasets. Either run `main_translate.py` and set the variable "--model-type" to "MLCR-Rot-hop++". Another option is to manually run the ``MLCR-Rot-hop++" function in `main_translate.py`. Subsequently, follow the same steps as in the original XLMR_base-LCR-Rot-hop++, from `main\_hyperparam.py` onwards.
 
 ### XLMR_base-LCR-Rot-hop-XXen++
 Once again, this process can be run directly through the "main" method of `main_translate.py`. To do so, run `main_translate.py` and set the variable "--model-type" to "mLCR-Rot-hop-XXen++". The rest of the procedure (tuning, training and validating) is the same as in the other models.
