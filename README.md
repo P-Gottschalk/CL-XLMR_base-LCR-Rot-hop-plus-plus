@@ -47,7 +47,7 @@ To run MLCR-Rot-hop++, the English, Dutch, French, Spanish cleaned training data
 ### XLMR_base-LCR-Rot-hop-XXen++
 Once again, this process can be run directly through the "main" method of `main_translate.py`. To do so, run `main_translate.py` and set the variable "--model-type" to "mLCR-Rot-hop-XXen++". The rest of the procedure (tuning, training and validating) is the same as in the other models.
 
-To run this model manually, note that translation is necessary. Hence, the english training data first needs to be marked with the `mark_data.py` function in `main_translate.py`. Then the translation is done by running the `translate_data.py` function and specifying the target language as an input parameter. After running translation the markings need to be removed. That is done by the function "remove_symbols". After that the file has to be cleaned again by `main_clean.py` to remove opinions for which the translation failed. Then it can be run the same as the other models above.
+To run this model manually, note that translation is necessary. Hence, the English training data first needs to be marked with the `mark_data.py` function in `main_translate.py`. Then the translation is done by running the `translate_data.py` function and specifying the target language as an input parameter. After running translation the markings need to be removed. That is done by the function "remove_symbols". After that the file has to be cleaned again by `main_clean.py` to remove opinions for which the translation failed. Then it can be run the same as the other models above.
 
 ### XLMR_base-Rot-hop-ACSxx
 To run this model directly through `main_translate.py`, set the variable "--model-type" to "mLCR-Rot-hop-ACSxx".
