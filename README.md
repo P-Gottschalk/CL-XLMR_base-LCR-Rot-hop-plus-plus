@@ -31,12 +31,12 @@ Note that the some files include an ontology reasoner, and an ontology injection
 
 ## Models
 ### XLMR_base-LCR-Rot-hop++
-Run `main_clean.py` on the English train and test datasets, which is selected by passing either "Train" or "Test" as parameter inputs for the variable "phase". Note that the test dataset for the language that the model is evaluated on also needs to be cleaned. Second, create XLM-R_base embeddings, which is done with `main_embed_xlmr.py` and setting the variable "--model-spec" to "xlm-roberta-base". For XLM-R embeddings, set "--model-spec" to "xlm-roberta-large". For mBERT embeddings, use `main_embed_mbert.py` instead. Then, run `main_hyperparam.py`, which provides a checkpoint file in the "data" folder, which contains the hyperparameter values needed to be changed in `main_train.py`. After updating the hyperparameters manually, run `main_train.py`, which gives a model as output, ready to be tested. Last, validate the model with `main_validate.py`, which outputs the performance measures.
+Run `main_clean.py` on the English train and test datasets, which are selected by passing either "Train" or "Test" as parameter inputs for the variable "--phase". Note that the test dataset for the language that the model is evaluated on also needs to be cleaned. Second, create XLM-R_base embeddings, which is done with `main_embed_xlmr.py` and setting the variable "--model-spec" to "xlm-roberta-base". For XLM-R embeddings, set "--model-spec" to "xlm-roberta-large". For mBERT embeddings, use `main_embed_mbert.py` instead. Then, run `main_hyperparam.py`, which provides a checkpoint file in the "data" folder, which contains the hyperparameter values needed to be changed in `main_train.py`. After updating the hyperparameters manually, run `main_train.py`, which gives a model as output, ready to be tested. Last, validate the model with `main_validate.py`, which outputs the performance measures.
 
 #### Adjustments for Contrastive Learning
 
 - `main_hyperparam.py`: set the variable "--contrastive-learning" to "Sen" if to utilising the sentiment-level contrastive learning. Set the variable "--contrastive-learning" to "Rep" to utilise the contrastive learning with the concatenated representation vector from the LCR-Rot-hop++ model.
-- `main_train.py`: set the variable "--contrastive-learning" as described above. Set the variable "--beta" to the beta from the checkpoints obtained the `main_hyperparam.py` method.
+- `main_train.py`: set the variable "--contrastive-learning" as described above. Set the variable "--beta" to the beta from the checkpoints obtained by the `main_hyperparam.py` method.
 
 ### XLMR_base-LCR-Rot-hop-XX++
 For these models, the same procedure as in XLMR_base-LCR-Rot-hop++ can be followed. However, the data corresponding to the language XX should be used for training and testing.
@@ -52,7 +52,7 @@ To run this model manually, note that translation is necessary. Hence, the Engli
 ### XLMR_base-Rot-hop-ACSxx
 To run this model directly through `main_translate.py`, set the variable "--model-type" to "mLCR-Rot-hop-ACSxx".
 
-To run the model manually, which implements Aspect-Code-Switching, the same marked data created in the process for mLCR-Rot-hop-XXen and translated data, with markings, are used. The function Aspect-Code-Switching needs to be called and creates two more datasets with markings. Then all markings need to be removed per dataset with the function "remove_symbols". Afterwards, all files need to be cleaned again to remove any failed switches. Then the function "join_datasets_ACS" needs to be called to combine the four datasets for one ACS model with xx as target language.
+To run the model manually, which implements Aspect-Code-Switching, the same marked data created in the process for mLCR-Rot-hop-XXen and translated data, with markings, are used. The function Aspect-Code-Switching needs to be called and creates two more datasets with markings. Then all markings need to be removed per dataset with the function "remove_symbols". Afterwards, all files need to be cleaned again to remove any failed switches. Then the function "join_datasets_ACS" needs to be called to combine the four datasets for one ACS model with xx as the target language.
 
 ### Plotting t-SNE Graphs
 **Note:** This requires the models to have been trained beforehand. We also require the test data to have been embedded with the utilised embedder.
@@ -62,8 +62,8 @@ Once the respective model has been trained, the dimension-reduced (using t-SNE) 
 - "--model-type": which type of embeddings are used in the trained model ("mBERT", "xlm-roberta-base", "xlm-roberta-large")
 - "--plot-name": a str with the name of the `.png` file you want the plot to have.
 - "--type-plot": whether you want to distinguish plotted points via true labels (str: "label") or via predictions (str: "pred").
-- "--model-base": directory address of the base model (for XLMR_base-LCR-Rot-hop++ and XLMR_base-MLCR-Rot-hop++) or the english model (XLMR_base-LCR-Rot-hop-XX++). Leave empty for XLMR_base-LCR-Rot-hop-XXen++ and XLMR_base-Rot-hop-ACSxx.
-- "--model-dutch": directory address for Dutch model (XLMR_base-LCR-Rot-hop-XX++, XLMR_base-LCR-Rot-hop-XXen++, XLMR_base-Rot-hop-ACSxx). Leave empty for XLMR_base-LCR-Rot-hop++ and XLMR_base-MLCR-Rot-hop++. Note that this will only be plotted if directory addresses are also given for the French and Spanish model.
+- "--model-base": directory address of the base model (for XLMR_base-LCR-Rot-hop++ and XLMR_base-MLCR-Rot-hop++) or the English model (XLMR_base-LCR-Rot-hop-XX++). Leave empty for XLMR_base-LCR-Rot-hop-XXen++ and XLMR_base-Rot-hop-ACSxx.
+- "--model-dutch": directory address for Dutch model (XLMR_base-LCR-Rot-hop-XX++, XLMR_base-LCR-Rot-hop-XXen++, XLMR_base-Rot-hop-ACSxx). Leave empty for XLMR_base-LCR-Rot-hop++ and XLMR_base-MLCR-Rot-hop++. Note that this will only be plotted if directory addresses are also given for the French and Spanish models.
 - "--model-french": as above.
 - "--model-spanish": as above. 
 
@@ -85,7 +85,7 @@ To store data, create a folder within Google Drive. Ensure you change the direct
 ### XLMR_base-LCR-Rot-hop++
 
 1. `Shell_Clean_Embedding.ipynb`: run the "Cleaning" section of the .ipynb file. Then, run the "English Embeddings" subsection in "Embeddings". Also run the embeddings subsection of any language used for model testing.
-2. `Shell Multilingual.ipynb`: run the "Hyperparameter Optimisation" and "Model Training" subsections of "XLMR-LCR-Rot-hop++". Note that the optimal hyperparameters have to be manually inputted for "Model Training". This returns the mLCR-Ror-hop++, XLMR_base-LCR-Rot-hop++ and XLMR-LCR-Rot-hop++ model. To validate the results for the English language, also run the "Model Validation" subsection. Here, the directory address of the model needs to be manually inputted.
+2. `Shell_Multilingual.ipynb`: run the "Hyperparameter Optimisation" and "Model Training" subsections of "XLMR-LCR-Rot-hop++". Note that the optimal hyperparameters have to be manually inputted for "Model Training". This returns the mLCR-Ror-hop++, XLMR_base-LCR-Rot-hop++ and XLMR-LCR-Rot-hop++ model. To validate the results for the English language, also run the "Model Validation" subsection. Here, the directory address of the model needs to be manually inputted.
 3. `Shell_ _Language_ _Tuning_Training_Validation.ipynb`: to validate the results on _Language_, run the "Model Validation" subsection of the "XLMR-LCR-Rot-hop++" section.
 
 ### XLMR_base-LCR-Rot-hop-XX++
@@ -96,9 +96,9 @@ To store data, create a folder within Google Drive. Ensure you change the direct
 ### XLMR_base-MLCR-Rot-hop++
 
 1. `Shell_Clean_Embedding.ipynb`: run the "Cleaning" section of the .ipynb file.
-2. `Shell_Translate.ipynb`: run the XLMR_base-MLCR-Rot-hop++ section of the file.
+2. `Shell_Translate.ipynb`: run the "XLMR_base-MLCR-Rot-hop++" section of the file.
 3. `Shell_Clean_Embedding.ipynb`:  run the "Multilingual Embeddings" subsection in "Embeddings". Also run the embeddings subsection of any language used for model testing.
-4. `Shell Multilingual.ipynb`: run the "Hyperparameter Optimisation" and "Model Training" subsections of "XLMR-MLCR-Rot-hop++". Note that the optimal hyperparameters have to be manually inputted for "Model Training". This returns the MLCR-Ror-hop++, XLMR_base-MLCR-Rot-hop++ and XLMR-MLCR-Rot-hop++ model. To validate the results for the English language, also run the "Model Validation" subsection. Here, the directory address of the model needs to be manually inputted.
+4. `Shell_Multilingual.ipynb`: run the "Hyperparameter Optimisation" and "Model Training" subsections of "XLMR-MLCR-Rot-hop++". Note that the optimal hyperparameters have to be manually inputted for "Model Training". This returns the MLCR-Rot-hop++, XLMR_base-MLCR-Rot-hop++ and XLMR-MLCR-Rot-hop++ model. To validate the results for the English language, also run the "Model Validation" subsection. Here, the directory address of the model needs to be manually inputted.
 5. `Shell_ _Language_ _Tuning_Training_Validation.ipynb`: to validate the results on _Language_, run the "Model Validation" subsection of the "XLMR-MLCR-Rot-hop++" section.
 
 ### XLMR_base-Rot-hop-ACSxx
@@ -107,13 +107,13 @@ To store data, create a folder within Google Drive. Ensure you change the direct
 2. `Shell_Clean_Embedding.ipynb`:  for language XX, run the the three statements related to the ACS_XX methodology in the "_Language_ Embeddings" subsection, found in the larger "Embeddings" section.
 3. `Shell_ _Language_ _Tuning_Training_Validation.ipynb`: run the "Hyperparameter Optimisation" and "Model Training" subsections of "XLMR-LCR-Rot-hop-ACS_XX++". Note that the optimal hyperparameters have to be manually inputted for "Model Training". To validate the results on _Language_, run the "Model Validation" subsection of the "XLMR-LCR-Rot-hop-ACS_XX++" section. The directory address of the model requires manual input.
 
-### Contrastive Learning: All models
+### Contrastive Learning: All Models
 
-All contrastive learning models (CLS- and CLR-) can be run in a similar manner as the models described above. Until the the optimisation of the hyperparameters, the steps that need to be taken are identical. From here, run the "Hyperparameter Optimisation", "Model Training" and "Model Validation" in the respective CLS- and CLR- sections of the respective documents.
+All contrastive learning models (CLS- and CLR-) can be run in a similar manner as the models described above. Until the optimisation of the hyperparameters, the steps that need to be taken are identical. From here, run the "Hyperparameter Optimisation", "Model Training" and "Model Validation" in the respective CLS- and CLR- sections of the respective documents.
 
 ### Plotting: All Models
 
-1. `Shell_Plot.ipynb`: Once the respective models have been trained, and the test data of all languages has been embedded, simply run the required subsection ("Base Models", "CLS Models", "CLR MOdels") in the respective model section of the notebook.
+1. `Shell_Plot.ipynb`: Once the respective models have been trained, and the test data of all languages has been embedded, simply run the required subsection ("Base Models", "CLS Models", "CLR Models") in the respective model section of the notebook.
 
 ## Acknowledgements
 This repository is based on the source code of https://github.com/Anonymous71717/mLCR-Rot-hop-plus-plus.git.
