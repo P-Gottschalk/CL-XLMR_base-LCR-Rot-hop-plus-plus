@@ -25,7 +25,7 @@ Note that the some files include an ontology reasoner, and an ontology injection
 - `main_translate.py`: contains a main method to create the datasets needed for all models which require translation. Also contains all functions needed to create Multilingual datasets manually, a description of how to run each model is given below. Our version uses Google API for translation. 
 - `main_embed_mbert.py`: generate mBERT embeddings, these embeddings are used by the other programs.
 - `main_embed_xlmr.py`: generate XLM-R_base and XLM-R embeddings, these embeddings are used by the other programs.
-- `main_hyperparam.py`: run hyperparameter optimization. This method can be used both for models with contrastive learning and for models without contrastive learning. Note that for models with Contrastive Learning, we first optimise model parameters and then subsequently optimise the beta.
+- `main_hyperparam.py`: run hyperparameter optimization. This method can be used both for models with contrastive learning and for models without contrastive learning. Note that for models with contrastive learning, we first optimise model parameters and then subsequently optimise the beta.
 - `main_train.py`: train the model for a given set of hyperparameters.
 - `main_validate.py`: validate a trained model.
 
