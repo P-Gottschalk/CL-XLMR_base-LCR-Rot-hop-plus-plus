@@ -44,7 +44,7 @@ Clean the English training dataset using the `main_clean.py` method. Ensure that
 These models are trained using the same procedure as the XLMR_base-LCR-Rot-hop++ model, with the only change being that they are trained on embeddings from language XX (FR, ES, NL) rather than English.
 
 ### XLMR_base-MLCR-Rot-hop++
-The multilingual dataset that gives  MLCR-Rot-hop++ its name is created by combining the English, French, Spanish and Dutch datasets. Either run `main_translate.py` and set the variable "--model-type" to "MLCR-Rot-hop++". Another option is to manually run the ``MLCR-Rot-hop++" function in `main_translate.py`. Subsequently, follow the same steps as in the original XLMR_base-LCR-Rot-hop++, from `main\_hyperparam.py` onwards.
+The multilingual dataset that gives  MLCR-Rot-hop++ its name is created by combining the English, French, Spanish and Dutch datasets. Either run `main_translate.py` and set the variable "--model-type" to "MLCR-Rot-hop++". Another option is to manually run the "MLCR-Rot-hop++" function in `main_translate.py`. Subsequently, follow the same steps as in the original XLMR_base-LCR-Rot-hop++, from `main_hyperparam.py` onwards.
 
 ### XLMR_base-LCR-Rot-hop-XXen++
 Once again, this process can be run directly through the "main" method of `main_translate.py`. To do so, run `main_translate.py` and set the variable "--model-type" to "mLCR-Rot-hop-XXen++". The rest of the procedure (tuning, training and validating) is the same as in the other models.
