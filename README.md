@@ -54,7 +54,7 @@ To translate from English into language XX, we first need to mark the data. This
 ### XLMR_base-Rot-hop-ACSxx
 To run this model directly through `main_translate.py`, set the variable "--model-type" to "mLCR-Rot-hop-ACSxx".
 
-To run this model manually, follow the same steps as in the XLMR_base-LCR-Rot-hop-XXen++ model to obtain the marked and the translated data, but do not use the "remove_symbols" function on the translated data. Instead, run the "aspect_code_switching" function found in "main_translate.py". This creates two new datasets which have had the aspects switched. Now, run the "remove_symbols" and "clean_data" functions on each dataset individually. The "join_datasets_ACS" function can then be used to fuse the four individual datasets. From here, continue with hyperparameter tuning as described in all other models.
+To run this model manually, follow the same steps as in the XLMR_base-LCR-Rot-hop-XXen++ model to obtain the marked and the translated data, but do not use the "remove_symbols" function on the translated data. Instead, run the "aspect_code_switching" function found in `main_translate.py`. This creates two new datasets which have had the aspects switched. Now, run the "remove_symbols" and "clean_data" functions on each dataset individually. The "join_datasets_ACS" function can then be used to fuse the four individual datasets. From here, continue with hyperparameter tuning as described in all other models.
 
 ### Plotting t-SNE Graphs
 **Note:** This requires the models to have been trained beforehand. We also require the test data to have been embedded with the utilised embedder.
