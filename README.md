@@ -104,7 +104,7 @@ To store data, create a folder within Google Drive. Ensure you change the direct
 ### XLMR_base-Rot-hop-ACSxx
 
 1. `Shell_Translate.ipynb`: run the statement corresponding to language XX in the XLMR_base-LCR-Rot-hop-ACSxx section of the file.
-2. `Shell_Clean_Embedding.ipynb`:  for language XX, run the the three statements related to the ACS_XX methodology in the "_Language_ Embeddings" subsection, found in the larger "Embeddings" section.
+2. `Shell_Clean_Embedding.ipynb`:  for language XX, run the three statements related to the ACS_XX methodology in the "_Language_ Embeddings" subsection, found in the larger "Embeddings" section.
 3. `Shell_ _Language_ _Tuning_Training_Validation.ipynb`: run the "Hyperparameter Optimisation" and "Model Training" subsections of "XLMR-LCR-Rot-hop-ACS_XX++". Note that the optimal hyperparameters have to be manually inputted for "Model Training". To validate the results on _Language_, run the "Model Validation" subsection of the "XLMR-LCR-Rot-hop-ACS_XX++" section. The directory address of the model requires manual input.
 
 ### Contrastive Learning: All Models
