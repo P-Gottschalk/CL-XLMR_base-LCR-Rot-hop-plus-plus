@@ -36,7 +36,7 @@ Run `main_clean.py` on the English train and test datasets, which is selected by
 #### Adjustments for Contrastive Learning
 
 - `main_hyperparam.py`: set the variable "--contrastive-learning" to "Sen" if to utilising the sentiment-level contrastive learning. Set the variable "--contrastive-learning" to "Rep" to utilise the contrastive learning with the concatenated representation vector from the LCR-Rot-hop++ model.
-- `main_train.py`: set the variable "--contrastive-learning" as described above. Set the variable "--beta" to the beta from the checkpoints obtained the the `main_hyperparam.py` method.
+- `main_train.py`: set the variable "--contrastive-learning" as described above. Set the variable "--beta" to the beta from the checkpoints obtained the `main_hyperparam.py` method.
 
 ### XLMR_base-LCR-Rot-hop-XX++
 For these models, the same procedure as in XLMR_base-LCR-Rot-hop++ can be followed. However, the data corresponding to the language XX should be used for training and testing.
