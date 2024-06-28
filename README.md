@@ -59,7 +59,7 @@ To run this model manually, follow the same steps as in the XLMR_base-LCR-Rot-ho
 ### Plotting t-SNE Graphs
 **Note:** This requires the models to have been trained beforehand. We also require the test data to have been embedded with the utilised embedder.
 
-Once the respective model has been trained, the dimension-reduced (using t-SNE) high-level sentiment representation vectors can be plotted using the `main_plot.py` method. Note that we plot all languages on the same graph. To do so, the following parameters have to be set accordingly:
+Once the respective model has been trained, the high-level sentiment representation vectors can be plotted using the `main_plot.py` method, using the t-SNE methodology. Note that we plot all languages on the same graph. To do so, the following parameters have to be set accordingly:
 
 - "--model-type": which type of embeddings are used in the trained model ("mBERT", "xlm-roberta-base", "xlm-roberta-large")
 - "--plot-name": a str with the name of the `.png` file you want the plot to have.
