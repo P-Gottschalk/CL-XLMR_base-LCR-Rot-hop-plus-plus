@@ -7,7 +7,7 @@ Classification using Contrastive Learning.
 
 First, create a `data/raw` directory and download
 the [SemEval 2016](http://alt.qcri.org/semeval2016/task5/index.php?id=data-and-tools)
-dataset for the language to test. Note here that we use the Subtask 1 data for respective languages. Then rename the SemEval datasets to end up with the following files:
+dataset for the languages used for testing and training. Note here that we use the Subtask 1 data for respective languages. Then rename the SemEval datasets as follows:
 
 - `data/raw`
     - `ABSA16_Restaurants_Test_Language.xml`
