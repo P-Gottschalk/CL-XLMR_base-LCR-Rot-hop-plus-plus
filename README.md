@@ -6,14 +6,14 @@ Classification using Contrastive Learning.
 ## Data
 
 First, create a `data/raw` directory and download
-the [SemEval 2016](http://alt.qcri.org/semeval2016/task5/index.php?id=data-and-tools)
+the [SemEval-2016](http://alt.qcri.org/semeval2016/task5/index.php?id=data-and-tools)
 dataset for the languages used for testing and training. Note here that we use the Subtask 1 data for respective languages. Then rename the SemEval datasets as follows:
 
 - `data/raw`
     - `ABSA16_Restaurants_Test_Language.xml`
     - `ABSA16_Restaurants_Train_Language.xml`
 
-Note that this directory addresses may have to be adapted in the code itself, as the directories are currently set for a combined usage of Google Colab and Google Drive. The current form in the Colab optimised code is as follows: `/content/drive/MyDrive/Thesis_Data/data/raw`
+Note that these directory addresses may have to be adapted in the code itself, as the directories are currently set for a combined usage of Google Colab and Google Drive. The current form in the Colab optimised code is as follows: `/content/drive/MyDrive/Thesis_Data/data/raw`
 
 ## Usage
 
