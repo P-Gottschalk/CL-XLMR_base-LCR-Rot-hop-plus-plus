@@ -19,7 +19,6 @@ class ConLoss(torch.nn.Module):
         labels = labels.contiguous().view(-1,1)
         labels_ = []
         for i in labels.tolist():
-            # print(i[0]) -> debugging
             if i[0] == 0:
                 labels_.append([1])
             elif i[0] == 1:
@@ -43,8 +42,6 @@ class ConLoss(torch.nn.Module):
 
         # compute logits
         anchor_dot_contrast = torch.div(torch.matmul(anchor_feature, contrast_feature.T), self.temperature)
-
-        # print("Shape of anchor_dot_contrast:", anchor_dot_contrast.shape)
 
         # for numerical stability  
         logits_max, _ = torch.max(anchor_dot_contrast, dim=0, keepdim=True)

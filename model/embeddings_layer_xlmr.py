@@ -48,7 +48,6 @@ class EmbeddingsLayerXLMR:
         embeddings = torch.round(unrounded_embeddings * 10 ** n_digits) / (10 ** n_digits)
 
         embeddings = embeddings[0][1:-1]
-        # print(embeddings) -> debugging
 
         return embeddings, (target_index_start, target_index_end), None
 

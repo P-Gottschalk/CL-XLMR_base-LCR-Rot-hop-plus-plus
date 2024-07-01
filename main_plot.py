@@ -69,10 +69,14 @@ def get_results(model:LCRRotHopPlusPlus, language:str, dataset: EmbeddingsDatase
 
             if target is not None and len(target) != 0:
                 sent_output,rep_output = model(left, target, right, hops)
-                #sent_label = sent_output.argmax(0)
+                sent_label = sent_output.argmax(0)
 
                 collection.append(rep_output)
-                sentiments.append(label)
+                
+                if type_plot == "label":
+                    sentiments.append(label)
+                elif type_plot == "pred":
+                    sentiments.append(sent_label)
 
             else:
                 print(f"\n[Invalid instance in batch {i}. Instance skipped]")
