@@ -1,4 +1,4 @@
-# Partially inspired by and adapted from https://github.com/GKLMIP/CL-XABSA.git
+# Partially inspired by https://github.com/GKLMIP/CL-XABSA.git
 
 import argparse
 import os
