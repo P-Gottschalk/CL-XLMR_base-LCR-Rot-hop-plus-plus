@@ -2,10 +2,10 @@
 import numpy as np
 import torch
 
-class SentConLoss(torch.nn.Module):
+class ConLoss(torch.nn.Module):
 
     def __init__(self, temperature = 0.07, base_temperature = 0.07):
-        super(SentConLoss, self).__init__()
+        super(ConLoss, self).__init__()
         self.temperature = temperature
         self.base_temperature = base_temperature
     

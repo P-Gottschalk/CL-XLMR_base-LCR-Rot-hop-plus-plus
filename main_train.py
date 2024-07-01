@@ -9,7 +9,7 @@ from tqdm import tqdm
 
 from model.lcr_rot_hop_plus_plus import LCRRotHopPlusPlus
 from utils import EmbeddingsDataset, train_validation_split
-from utils.sent_con_loss import SentConLoss
+from utils.con_loss import ConLoss
 
 
 def stringify_float(value: float):
@@ -125,7 +125,7 @@ def main():
                 batch_labels = torch.tensor(batch_labels)
 
                 loss_ce: torch.Tensor = criterion(batch_outputs, batch_labels)
-                loss_cl = SentConLoss().to('cuda')
+                loss_cl = ConLoss().to('cuda')
 
                 if contrastive_learning == "Rep":
                     batch_outputs_concat = torch.stack(batch_outputs_concat, dim = 0)
@@ -176,8 +176,8 @@ def main():
                         output = output.unsqueeze(0)
                         output_concat = output_concat.unsqueeze(0)
 
-                        loss_cl = SentConLoss().to('cuda')
-                        
+                        loss_cl = ConLoss().to('cuda')
+                    
                         if contrastive_learning == "Rep":
                             loss_cl = loss_cl(output_concat, label)
                             loss_cl = loss_cl / len(output_concat)
