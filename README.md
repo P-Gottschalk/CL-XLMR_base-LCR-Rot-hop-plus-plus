@@ -126,7 +126,7 @@ The `model.bert_encoder` module uses code from:
   knowledge graph. In: 34th AAAI Conference on Artificial Intelligence. vol. 34, pp. 2901–2908. AAAI Press (2020)
 - https://github.com/Felix0161/KnowledgeEnhancedABSA
 
-The `utils.sent_con_loss module` is based on code from:
+The `utils.con_loss` module is based on code from and `main_plot.py` partially adapts code from:
 
 - Lin, N., Fu, Y., Lin, X., Zhou, D., Yang, A. & Jiang, S. (2023). CL-XABSA: contrastive learning for cross-lingual aspect-based sentiment analysis. IEEE/ACM Transactions on Audio, Speech, and Language Processing, 31 , 2935-2946.
 
