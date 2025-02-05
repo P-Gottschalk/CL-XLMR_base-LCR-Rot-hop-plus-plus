@@ -13,7 +13,7 @@ dataset for the languages used for testing and training. Note here that we use t
     - `ABSA16_Restaurants_Test_Language.xml`
     - `ABSA16_Restaurants_Train_Language.xml`
 
-Note that these directory addresses may have to be adapted in the code itself, as the directories are currently set for a combined usage of Google Colab and Google Drive. The current form in the Colab optimised code is as follows: `/content/drive/MyDrive/Thesis_Data/data/raw`
+Note that these directory addresses may have to be adapted in the code itself, as the directories are currently set for a combined usage of Google Colab and Google Drive. The current form in the Colab optimised code is as follows: `/content/drive/MyDrive/data/raw`
 
 ## Usage
 
