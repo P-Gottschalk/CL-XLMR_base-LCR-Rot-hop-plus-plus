@@ -7,8 +7,8 @@ def clean_data(year: int, phase: str, language: str, dirname: str):
     """Clean a SemEval dataset by removing opinions with implicit targets. This function returns the cleaned dataset."""
     filename = f"ABSA{year % 2000}_Restaurants_{phase}_{language}.xml"
 
-    input_path = f"/content/drive/MyDrive/Thesis_Data/data/{dirname}/{filename}"
-    output_path = f"/content/drive/MyDrive/Thesis_Data/data/processed/{filename}"
+    input_path = f"/content/drive/MyDrive/data/{dirname}/{filename}"
+    output_path = f"/content/drive/MyDrive/data/processed/{filename}"
 
     # if os.path.isfile(output_path):
     #     print(f"Found cleaned file at {output_path}")

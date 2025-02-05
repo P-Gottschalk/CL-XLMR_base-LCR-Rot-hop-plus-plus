@@ -142,7 +142,7 @@ def main():
 
         return
 
-    results_dir = "/content/drive/MyDrive/Thesis_Data/data/results"
+    results_dir = "/content/drive/MyDrive/data/results"
     os.makedirs(results_dir, exist_ok=True)
     filename = f"ablation-{year}"
     if gamma is not None:

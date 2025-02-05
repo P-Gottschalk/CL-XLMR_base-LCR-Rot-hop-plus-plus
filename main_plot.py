@@ -132,9 +132,9 @@ def main():
     model_spanish: Optional[int] = args.model_spanish
 
     if type_plot == "label":
-        dir_path = "/content/drive/MyDrive/Thesis_Data/data/plots_label"
+        dir_path = "/content/drive/MyDrive/data/plots_label"
     elif type_plot == "pred":
-        dir_path = "/content/drive/MyDrive/Thesis_Data/data/plots_pred"
+        dir_path = "/content/drive/MyDrive/data/plots_pred"
     else:
         raise ValueError("Invalid type of plotting.")
 

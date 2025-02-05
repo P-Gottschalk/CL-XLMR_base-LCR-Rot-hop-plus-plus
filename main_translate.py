@@ -35,8 +35,8 @@ def mark_data(year:int, phase: str, language: str):
     print("Running marking")
     filename = f"ABSA{year % 2000}_Restaurants_{phase}_{language}.xml"
     filename_marked = f"ABSA{year % 2000}_Restaurants_{phase}_{language}Marked.xml"
-    input_path = f"/content/drive/MyDrive/Thesis_Data/data/raw/{filename}"
-    output_path = f"/content/drive/MyDrive/Thesis_Data/data/marked/{filename_marked}"
+    input_path = f"/content/drive/MyDrive/data/raw/{filename}"
+    output_path = f"/content/drive/MyDrive/data/marked/{filename_marked}"
     tree = ElementTree.parse(input_path)
     symbols = make_symbols()
 
@@ -81,8 +81,8 @@ def translate_data(year:int, phase: str, source_language: str, target_language: 
     print("Running translation")
     filename = f"ABSA{year % 2000}_Restaurants_{phase}_{source_language}Marked.xml"
     filename_translated = f"ABSA{year % 2000}_Restaurants_{phase}_{source_language}to{target_language}Translated.xml"
-    input_path = f"/content/drive/MyDrive/Thesis_Data/data/marked/{filename}"
-    output_path = f"/content/drive/MyDrive/Thesis_Data/data/translated/{filename_translated}"
+    input_path = f"/content/drive/MyDrive/data/marked/{filename}"
+    output_path = f"/content/drive/MyDrive/data/translated/{filename_translated}"
     tree = ElementTree.parse(input_path)
 
     target = ''
@@ -174,10 +174,10 @@ def aspect_code_switching(year: int, phase: str, source: str, target: str):
     filename_st = f"ABSA{year % 2000}_Restaurants_{phase}_{source}to{target}ACS.xml"
     filename_ts = f"ABSA{year % 2000}_Restaurants_{phase}_{target}to{source}ACS.xml"
 
-    source_path = f"/content/drive/MyDrive/Thesis_Data/data/marked/{filename_source}"
-    target_path = f"/content/drive/MyDrive/Thesis_Data/data/translated/{filename_target}"
-    st_path = f"/content/drive/MyDrive/Thesis_Data/data/acs/{filename_st}"
-    ts_path = f"/content/drive/MyDrive/Thesis_Data/data/acs/{filename_ts}"
+    source_path = f"/content/drive/MyDrive/data/marked/{filename_source}"
+    target_path = f"/content/drive/MyDrive/data/translated/{filename_target}"
+    st_path = f"/content/drive/MyDrive/data/acs/{filename_st}"
+    ts_path = f"/content/drive/MyDrive/data/acs/{filename_ts}"
 
     tree_source = ElementTree.parse(source_path)
     tree_target = ElementTree.parse(target_path)
@@ -357,12 +357,12 @@ def remove_symbols(filename):
 
 def MLCR_Rot_hop_plus_plus(year, phase):
 
-    english_path = f"/content/drive/MyDrive/Thesis_Data/data/processed/ABSA{year % 2000}_Restaurants_{phase}_English.xml"
-    dutch_path = f"/content/drive/MyDrive/Thesis_Data/data/processed/ABSA{year % 2000}_Restaurants_{phase}_Dutch.xml"
-    french_path = f"/content/drive/MyDrive/Thesis_Data/data/processed/ABSA{year % 2000}_Restaurants_{phase}_French.xml"
-    spanish_path = f"/content/drive/MyDrive/Thesis_Data/data/processed/ABSA{year % 2000}_Restaurants_{phase}_Spanish.xml"
+    english_path = f"/content/drive/MyDrive/data/processed/ABSA{year % 2000}_Restaurants_{phase}_English.xml"
+    dutch_path = f"/content/drive/MyDrive/data/processed/ABSA{year % 2000}_Restaurants_{phase}_Dutch.xml"
+    french_path = f"/content/drive/MyDrive/data/processed/ABSA{year % 2000}_Restaurants_{phase}_French.xml"
+    spanish_path = f"/content/drive/MyDrive/data/processed/ABSA{year % 2000}_Restaurants_{phase}_Spanish.xml"
 
-    multilingual_path = f"/content/drive/MyDrive/Thesis_Data/data/processed/ABSA{year % 2000}_Restaurants_{phase}_Multilingual.xml"
+    multilingual_path = f"/content/drive/MyDrive/data/processed/ABSA{year % 2000}_Restaurants_{phase}_Multilingual.xml"
 
     xml_files = [english_path, dutch_path, french_path, spanish_path]
 
@@ -378,13 +378,13 @@ def MLCR_Rot_hop_plus_plus(year, phase):
 
 
 def SLCR_Rot_hop_plus_plus(year, phase):
-    english_path = f"/content/drive/MyDrive/Thesis_Data/data/processed/ABSA{year % 2000}_Restaurants_{phase}_English.xml"
+    english_path = f"/content/drive/MyDrive/data/processed/ABSA{year % 2000}_Restaurants_{phase}_English.xml"
     #This will need changing if adapted -> otherwise remove
-    dutch_path = f"/content/drive/MyDrive/Thesis_Data/data/processed/ABSA{year % 2000}_Restaurants_{phase}_DutchTranslated.xml"
-    french_path = f"/content/drive/MyDrive/Thesis_Data/data/processed/ABSA{year % 2000}_Restaurants_{phase}_FrenchTranslated.xml"
-    spanish_path = f"/content/drive/MyDrive/Thesis_Data/data/processed/ABSA{year % 2000}_Restaurants_{phase}_SpanishTranslated.xml"
+    dutch_path = f"/content/drive/MyDrive/data/processed/ABSA{year % 2000}_Restaurants_{phase}_DutchTranslated.xml"
+    french_path = f"/content/drive/MyDrive/data/processed/ABSA{year % 2000}_Restaurants_{phase}_FrenchTranslated.xml"
+    spanish_path = f"/content/drive/MyDrive/data/processed/ABSA{year % 2000}_Restaurants_{phase}_SpanishTranslated.xml"
 
-    multilingual_path = f"/content/drive/MyDrive/Thesis_Data/data/processed/ABSA{year % 2000}_Restaurants_{phase}_Translated.xml"
+    multilingual_path = f"/content/drive/MyDrive/data/processed/ABSA{year % 2000}_Restaurants_{phase}_Translated.xml"
 
     xml_files = [english_path, dutch_path, french_path, spanish_path]
 
@@ -407,12 +407,12 @@ def join_datasets_ACS(year, phase, source, target):
 
     filename_acs = f"ABSA{year % 2000}_Restaurants_{phase}_XACSfor{target}.xml"
 
-    source_path = f"/content/drive/MyDrive/Thesis_Data/data/processed/{filename_source}"
-    target_path = f"/content/drive/MyDrive/Thesis_Data/data/processed/{filename_target}"
-    st_path = f"/content/drive/MyDrive/Thesis_Data/data/processed/{filename_st}"
-    ts_path = f"/content/drive/MyDrive/Thesis_Data/data/processed/{filename_ts}"
+    source_path = f"/content/drive/MyDrive/data/processed/{filename_source}"
+    target_path = f"/content/drive/MyDrive/data/processed/{filename_target}"
+    st_path = f"/content/drive/MyDrive/data/processed/{filename_st}"
+    ts_path = f"/content/drive/MyDrive/data/processed/{filename_ts}"
 
-    acs_path = f"/content/drive/MyDrive/Thesis_Data/data/processed/{filename_acs}"
+    acs_path = f"/content/drive/MyDrive/data/processed/{filename_acs}"
     xml_files = [source_path, target_path, st_path, ts_path]
 
     root = ElementTree.Element("Reviews")
@@ -464,15 +464,15 @@ def main():
         if model_type == "mLCR-Rot-hop-ACSxx":
             aspect_code_switching(year=year,phase=phase,source=source,target=target)
 
-            remove_symbols(f"/content/drive/MyDrive/Thesis_Data/data/marked/ABSA{year % 2000}_Restaurants_{phase}_{source}Marked.xml")
-            remove_symbols(f"/content/drive/MyDrive/Thesis_Data/data/acs/ABSA{year % 2000}_Restaurants_{phase}_{source}to{target}ACS.xml")
-            remove_symbols(f"/content/drive/MyDrive/Thesis_Data/data/acs/ABSA{year % 2000}_Restaurants_{phase}_{target}to{source}ACS.xml")
+            remove_symbols(f"/content/drive/MyDrive/data/marked/ABSA{year % 2000}_Restaurants_{phase}_{source}Marked.xml")
+            remove_symbols(f"/content/drive/MyDrive/data/acs/ABSA{year % 2000}_Restaurants_{phase}_{source}to{target}ACS.xml")
+            remove_symbols(f"/content/drive/MyDrive/data/acs/ABSA{year % 2000}_Restaurants_{phase}_{target}to{source}ACS.xml")
 
             clean.clean_data(year=year,phase=phase,language=source + "Marked", dirname="marked")
             clean.clean_data(year=year,phase=phase,language=source+"to"+target+"ACS", dirname="acs")
             clean.clean_data(year=year,phase=phase,language=target+"to"+source+"ACS", dirname="acs")
 
-        remove_symbols(f"/content/drive/MyDrive/Thesis_Data/data/translated/ABSA{year % 2000}_Restaurants_{phase}_{source}to{target}Translated.xml")
+        remove_symbols(f"/content/drive/MyDrive/data/translated/ABSA{year % 2000}_Restaurants_{phase}_{source}to{target}Translated.xml")
         clean.clean_data(year=year,phase=phase,language=source+"to"+target+"Translated",dirname="translated")
 
         if model_type == "mLCR-Rot-hop-ACSxx":

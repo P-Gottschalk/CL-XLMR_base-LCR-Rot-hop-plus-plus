@@ -208,7 +208,7 @@ def main():
         print("Interrupted training procedure, saving best model...")
 
     if best_state_dict is not None:
-        models_dir = os.path.join("/content/drive/MyDrive/Thesis_Data/data", "models")
+        models_dir = os.path.join("/content/drive/MyDrive/data", "models")
         os.makedirs(models_dir, exist_ok=True)
         model_name = f"{year}_{language}_LCR_hops{lcr_hops}_dropout{stringify_float(dropout_rate)}_acc{stringify_float(best_accuracy)}_{model_type}"
 

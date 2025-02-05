@@ -42,7 +42,7 @@ class HyperOptManager:
                           'mps' if torch.backends.mps.is_available() else 'cpu')
 
         # read checkpoint if exists
-        self.__checkpoint_dir = f"/content/drive/MyDrive/Thesis_Data/data/checkpoints/{year}_{phase}_{language}_{self.model_type}_epochs{self.n_epochs_hyper}"
+        self.__checkpoint_dir = f"/content/drive/MyDrive/data/checkpoints/{year}_{phase}_{language}_{self.model_type}_epochs{self.n_epochs_hyper}"
 
         if contrastive_learning == "Rep":
             self.__checkpoint_dir = self.__checkpoint_dir + "_CL_Rep"

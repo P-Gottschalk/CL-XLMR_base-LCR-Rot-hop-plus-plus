@@ -13,7 +13,7 @@ from utils import download_from_url, EmbeddingsDataset
 def get_data(year, phase, language, dirname):
     filename = f"ABSA{year % 2000}_Restaurants_{phase}_{language}.xml"
 
-    path = f"/content/drive/MyDrive/Thesis_Data/data/{dirname}/{filename}"
+    path = f"/content/drive/MyDrive/data/{dirname}/{filename}"
 
     tree = ElementTree.parse(path)
 
